@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Mentorat Actif, un an plus tard — Bilan des changements observés</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            DEFAULT: '#fbf9f4',
+                            dark: '#f0ece1',
+                            card: '#f5f2e9',
+                        },
+                        burgundy: {
+                            DEFAULT: '#7A2222',
+                            dark: '#5c1717',
+                            light: '#9e3535',
+                            subtle: '#f3e6e6'
+                        },
+                        academic: {
+                            text: '#2c2925',
+                            muted: '#635e57',
+                            border: '#e4decb'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Lora', 'Merriweather', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Lora (academic serif) and Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fbf9f4;
+            color: #2c2925;
+        }
+        .academic-text {
+            font-family: 'Lora', serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0ece1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4ccb8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7A2222;
+        }
+        .nav-link.active {
+            color: #7A2222;
+            font-weight: 600;
+            background-color: #f3e6e6;
+            border-left: 3px solid #7A2222;
+        }
+    </style>
+</head>
+<body class="bg-cream text-academic-text antialiased selection:bg-burgundy selection:text-white">
+
+    <!-- 1. Top Fixed Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 h-16 bg-cream-card/95 backdrop-blur-md border-b border-academic-border z-50 flex items-center px-4 md:px-8 shadow-sm">
+        <div class="max-w-7xl mx-auto w-full flex items-center justify-between">
+            <div class="flex items-center space-x-3 overflow-hidden">
+                <span class="flex-shrink-0 w-3 h-3 rounded-full bg-burgundy"></span>
+                <h1 class="academic-text text-sm md:text-base font-semibold text-burgundy-dark truncate tracking-tight">
+                    Le Mentorat Actif, un an plus tard — Bilan des changements observés un an après l’implantation
+                </h1>
+            </div>
+            <div class="hidden lg:flex items-center space-x-4 text-xs font-medium text-academic-muted">
+                <span>Regroupement québécois du parrainage civique</span>
+                <span>•</span>
+                <span>Université Laval & UQTR</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container with Top Padding for Fixed Header -->
+    <div class="pt-16 min-h-screen flex flex-col lg:flex-row max-w-[1600px] mx-auto">
+
+        <!-- 2. Left Permanent Sticky Sidebar -->
+        <aside class="lg:w-80 xl:w-96 bg-cream-dark/60 border-r border-academic-border lg:h-[calc(100vh-4rem)] lg:sticky lg:top-16 flex flex-col overflow-y-auto p-6 space-y-6 flex-shrink-0">
+            
+            <!-- Authors Section -->
+            <div class="space-y-4 pb-6 border-b border-academic-border">
+                <h2 class="text-xs uppercase tracking-wider font-semibold text-burgundy">Autrices du texte</h2>
+                
+                <div class="space-y-4">
+                    <!-- Author 1: Monique Maltais -->
+                    <div class="flex items-start space-x-3 bg-cream p-3 rounded-lg border border-academic-border shadow-xs">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Monique Maltais" class="w-12 h-12 rounded-full object-cover border border-burgundy/30 flex-shrink-0" onerror="this.src='https://placehold.co/120x120/7A2222/ffffff?text=MM'">
+                        <div class="text-xs">
+                            <h3 class="font-bold text-academic-text">Monique Maltais</h3>
+                            <p class="text-academic-muted mt-0.5 leading-relaxed">Anciennement coordonnatrice du Centre de parrainage civique de Québec, Responsable de l’application du Mentorat Actif au Regroupement québécois du parrainage civique.</p>
+                        </div>
+                    </div>
+
+                    <!-- Author 2: Élise Milot -->
+                    <div class="flex items-start space-x-3 bg-cream p-3 rounded-lg border border-academic-border shadow-xs">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80" alt="Élise Milot" class="w-12 h-12 rounded-full object-cover border border-burgundy/30 flex-shrink-0" onerror="this.src='https://placehold.co/120x120/5c4033/ffffff?text=EM'">
+                        <div class="text-xs">
+                            <h3 class="font-bold text-academic-text">Élise Milot</h3>
+                            <p class="text-academic-muted mt-0.5 leading-relaxed">Professeure titulaire à l’École de travail social et de criminologie de l’Université Laval et cotitulaire de la Chaire Autodétermination et Handicap.</p>
+                        </div>
+                    </div>
+
+                    <!-- Author 3: Laurence Ouellet -->
+                    <div class="flex items-start space-x-3 bg-cream p-3 rounded-lg border border-academic-border shadow-xs">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=120&q=80" alt="Laurence Ouellet" class="w-12 h-12 rounded-full object-cover border border-burgundy/30 flex-shrink-0" onerror="this.src='https://placehold.co/120x120/3b4d61/ffffff?text=LO'">
+                        <div class="text-xs">
+                            <h3 class="font-bold text-academic-text">Laurence Ouellet</h3>
+                            <p class="text-academic-muted mt-0.5 leading-relaxed">Agente de recherche, Chaire Autodétermination et Handicap, UQTR.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Navigation Menu -->
+            <nav class="space-y-3 pb-6">
+                <h2 class="text-xs uppercase tracking-wider font-semibold text-burgundy">Navigation dans le texte</h2>
+                <div class="flex flex-col space-y-1 text-sm font-medium">
+                    <a href="#introduction" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
+                        <span>Introduction</span>
+                        <span class="text-xs text-academic-muted">00</span>
+                    </a>
+                    <a href="#section-1" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
+                        <span>1. L’appropriation du jumelage</span>
+                        <span class="text-xs text-academic-muted">01</span>
+                    </a>
+                    <a href="#section-2" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
+                        <span>2. Nouveaux outils par et pour</span>
+                        <span class="text-xs text-academic-muted">02</span>
+                    </a>
+                    <a href="#section-3" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
+                        <span>3. Importance de l’accompagnement</span>
+                        <span class="text-xs text-academic-muted">03</span>
+                    </a>
+                    <a href="#section-4" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
+                        <span>4. Maintenir le lien de confiance</span>
+                        <span class="text-xs text-academic-muted">04</span>
+                    </a>
+                    <a href="#section-5" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
+                        <span>5. Évolution des pratiques</span>
+                        <span class="text-xs text-academic-muted">05</span>
+                    </a>
+                    <a href="#section-6" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
+                        <span>6. Nouvelle vision de l’inclusion</span>
+                        <span class="text-xs text-academic-muted">06</span>
+                    </a>
+                    <a href="#conclusion" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
+                        <span>Conclusion</span>
+                        <span class="text-xs text-academic-muted">07</span>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Quick Guide Link Box -->
+            <div class="mt-auto bg-burgundy-subtle border border-burgundy/20 rounded-lg p-4 text-xs text-burgundy-dark space-y-2">
+                <p class="font-semibold">Ressource en ligne</p>
+                <p class="text-academic-text">Guide de mise en place, série documentaire et outils d'implantation.</p>
+                <a href="https://autodetermination.ca/outil/guide-de-mentorat-actif/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-1 font-bold text-burgundy hover:underline pt-1">
+                    <span>Accéder au site web</span>
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </div>
+
+        </aside>
+
+        <!-- 3. Right Main Content Column -->
+        <main class="flex-1 px-6 md:px-16 py-10 max-w-4xl mx-auto space-y-12">
+
+            <!-- Title & Subtitle Banner -->
+            <section class="border-b border-academic-border pb-8 text-center md:text-left space-y-4">
+                <div class="inline-block bg-burgundy-subtle text-burgundy px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase">
+                    Bilan annuel de recherche-action
+                </div>
+                <h1 class="academic-text text-3xl md:text-5xl font-bold text-burgundy-dark leading-tight">
+                    Le Mentorat Actif, un an plus tard
+                </h1>
+                <p class="academic-text text-lg md:text-xl text-academic-muted italic">
+                    Bilan des changements observés un an après l’implantation du Mentorat Actif dans les organismes de parrainage civique du Québec
+                </p>
+
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4 text-sm text-academic-muted border-t border-academic-border/60">
+                    <span><strong>Monique Maltais</strong></span>
+                    <span>•</span>
+                    <span><strong>Élise Milot</strong></span>
+                    <span>•</span>
+                    <span><strong>Laurence Ouellet</strong></span>
+                </div>
+            </section>
+
+            <!-- Introduction -->
+            <section id="introduction" class="space-y-6">
+                <h2 class="academic-text text-2xl md:text-3xl font-bold text-burgundy-dark border-b border-academic-border/60 pb-2">
+                    Introduction
+                </h2>
+                
+                <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                    <p>
+                        Le Mentorat Actif a été développé dans le cadre d’une recherche-action menée par une équipe de l’Université Laval, en partenariat avec Monique Maltais, représentante du Regroupement québécois du parrainage civique, et plusieurs organismes de parrainage civique à travers le Québec. Issu d’une démarche de recherche de longue haleine, ce projet a permis de concevoir, d’expérimenter et de bonifier une nouvelle façon de soutenir l’inclusion sociale de personnes ayant besoin d’accompagnement pour participer pleinement à la vie de leur communauté.
+                    </p>
+                    <p>
+                        Fidèle aux valeurs du parrainage civique, notamment l’autodétermination, la participation citoyenne et la valorisation des rôles sociaux, le Mentorat Actif constitue une approche complémentaire au jumelage traditionnel. Alors que le parrainage civique repose généralement sur la création d’un lien significatif entre une personne accompagnée et un bénévole, le Mentorat Actif mise sur la force d’un groupe déjà engagé dans la communauté. Concrètement, des membres d’un club, d’une équipe, d’un comité ou d’un regroupement de bénévoles se mobilisent collectivement pour accueillir, soutenir et inclure une personne ayant des besoins particuliers dans une activité qui correspond à ses intérêts.
+                    </p>
+                </div>
+
+                <!-- Conceptual Card 1: Traditional vs Active Mentoring -->
+                <div class="my-8 bg-cream-card border border-academic-border rounded-xl p-6 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-2 text-burgundy font-semibold text-sm uppercase tracking-wider">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        <span>Figure explicative 1 — Comparaison des approches d'inclusion</span>
+                    </div>
+                    
+                    <!-- SVG Conceptual Diagram -->
+                    <div class="w-full bg-cream p-4 rounded-lg border border-academic-border/55 overflow-x-auto">
+                        <svg viewBox="0 0 700 320" class="w-full h-auto min-w-[600px]">
+                            <!-- Background Grid / Styling -->
+                            <rect width="700" height="320" fill="#fbf9f4" rx="8" />
+                            
+                            <!-- Box 1: Jumelage Traditionnel -->
+                            <g transform="translate(40, 40)">
+                                <rect width="270" height="240" rx="10" fill="#f5f2e9" stroke="#d4ccb8" stroke-width="2" />
+                                <rect x="20" y="20" width="230" height="40" rx="6" fill="#e4decb" />
+                                <text x="135" y="45" font-family="Inter, sans-serif" font-size="13" font-weight="bold" fill="#2c2925" text-anchor="middle">Jumelage Traditionnel</text>
+                                
+                                <!-- Diagrammatic elements -->
+                                <circle cx="85" cy="130" r="24" fill="#7A2222" opacity="0.85" />
+                                <text x="85" y="135" font-family="Inter, sans-serif" font-size="11" fill="#ffffff" text-anchor="middle">Bénévole</text>
+                                
+                                <path d="M 115 130 L 185 130" stroke="#7A2222" stroke-width="2.5" stroke-dasharray="4,4" />
+                                <text x="150" y="120" font-family="Inter, sans-serif" font-size="10" fill="#635e57" text-anchor="middle">Lien 1 à 1</text>
+                                
+                                <circle cx="215" cy="130" r="24" fill="#3b4d61" opacity="0.85" />
+                                <text x="215" y="135" font-family="Inter, sans-serif" font-size="11" fill="#ffffff" text-anchor="middle">Personne</text>
+                                
+                                <text x="135" y="200" font-family="Inter, sans-serif" font-size="11" fill="#635e57" text-anchor="middle">Responsabilité individuelle</text>
+                                <text x="135" y="218" font-family="Inter, sans-serif" font-size="10" fill="#8c857b" text-anchor="middle">Relation dyadique ciblée</text>
+                            </g>
+
+                            <!-- Box 2: Mentorat Actif -->
+                            <g transform="translate(390, 40)">
+                                <rect width="270" height="240" rx="10" fill="#f3e6e6" stroke="#9e3535" stroke-width="2" />
+                                <rect x="20" y="20" width="230" height="40" rx="6" fill="#7A2222" />
+                                <text x="135" y="45" font-family="Inter, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Mentorat Actif</text>
+                                
+                                <!-- Diagrammatic elements (Group) -->
+                                <circle cx="85" cy="115" r="18" fill="#7A2222" opacity="0.85" />
+                                <circle cx="60" cy="150" r="18" fill="#7A2222" opacity="0.85" />
+                                <circle cx="110" cy="150" r="18" fill="#7A2222" opacity="0.85" />
+                                <text x="85" y="138" font-family="Inter, sans-serif" font-size="9" fill="#ffffff" text-anchor="middle">Groupe</text>
+                                
+                                <path d="M 135 132 L 185 132" stroke="#7A2222" stroke-width="2.5" />
+                                <text x="160" y="122" font-family="Inter, sans-serif" font-size="10" fill="#7A2222" font-weight="600" text-anchor="middle">Accueil</text>
+                                
+                                <circle cx="215" cy="132" r="24" fill="#3b4d61" opacity="0.85" />
+                                <text x="215" y="137" font-family="Inter, sans-serif" font-size="11" fill="#ffffff" text-anchor="middle">Personne</text>
+                                
+                                <text x="135" y="200" font-family="Inter, sans-serif" font-size="11" fill="#7A2222" font-weight="600" text-anchor="middle">Responsabilité partagée</text>
+                                <text x="135" y="218" font-family="Inter, sans-serif" font-size="10" fill="#635e57" text-anchor="middle">Mobilisation collective au sein d’un milieu</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="text-xs text-academic-muted italic text-center">
+                        Illustration conceptuelle : passage d’une relation duelle (jumelage traditionnel) à une inclusion portée par un groupe engagé (Mentorat Actif).
+                    </p>
+                </div>
+
+                <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                    <p>
+                        L’expérimentation du Mentorat Actif a montré que cette approche va bien au-delà d’une simple nouvelle formule de jumelage. Elle invite à concevoir l’inclusion comme une responsabilité partagée, plutôt que comme la responsabilité d’une seule personne. En s’appuyant sur les ressources déjà présentes au sein de groupes actifs dans la communauté, le Mentorat Actif favorise la création de milieux plus accueillants, où les personnes ayant des besoins particuliers peuvent tisser des liens, contribuer à la vie collective et trouver leur juste place.
+                    </p>
+                    <p>
+                        Aujourd’hui, le Mentorat Actif est une pratique reconnue qui fait partie intégrante de l’offre de services des organismes membres du Regroupement québécois du parrainage civique. Un an après son implantation dans le cadre de la recherche, le recul acquis permet de mieux comprendre les conditions favorisant sa mise en œuvre, son appropriation par les organismes et ses effets sur les pratiques d’intervention. Si l’expérimentation initiale ciblait principalement des personnes vieillissantes ayant une déficience intellectuelle et des groupes d’aîné·e·s, les organismes se sont rapidement approprié l’approche et l’ont adaptée à différents contextes et populations. Les constats qui émergent de cette première année témoignent ainsi de son potentiel pour favoriser une participation sociale véritable et faire évoluer les pratiques en soutien à l’inclusion sociale.
+                    </p>
+                </div>
+
+                <div class="bg-burgundy-subtle/55 border-l-4 border-burgundy p-4 rounded-r-lg my-6">
+                    <p class="text-sm text-academic-text italic">
+                        <strong>Pour en savoir plus :</strong> un guide en soutien à la mise en place, une série documentaire et de nombreux outils en soutien à l’implantation sont disponibles sur ce site : <a href="https://autodetermination.ca/outil/guide-de-mentorat-actif/" target="_blank" rel="noopener noreferrer" class="text-burgundy font-semibold underline hover:text-burgundy-dark">https://autodetermination.ca/outil/guide-de-mentorat-actif/</a>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section 1 -->
+            <section id="section-1" class="space-y-6 pt-6">
+                <h2 class="academic-text text-2xl md:text-3xl font-bold text-burgundy-dark border-b border-academic-border/60 pb-2">
+                    1. L’appropriation de cette nouvelle forme de jumelage
+                </h2>
+                
+                <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                    <p>
+                        À la suite du projet de recherche, plusieurs organismes ont choisi d’expérimenter différentes façons de mettre en œuvre le Mentorat Actif en fonction des réalités, des besoins et des ressources de leur territoire. Pour soutenir cette appropriation, les personnes intervenantes ont pu partager leurs questionnements, leurs réussites et les défis rencontrés dans le cadre d’espaces de dialogue animés par le Regroupement québécois du parrainage civique. Ces espaces comprenaient principalement des rencontres regroupant, quatre fois par année, les personnes impliquées dans la mise en œuvre du Mentorat Actif, ainsi que des suivis individualisés réalisés par Monique Maltais afin d’assurer la cohérence avec les principes de l’approche.
+                    </p>
+                    <p>
+                        Cette démarche a favorisé l’émergence d’une communauté de pratique et soutenu l’évolution des façons d’intervenir au sein des organismes. L’appropriation graduelle du Mentorat Actif par le Regroupement et ses membres constitue d’ailleurs une étape déterminante dans le développement de ce nouveau service. Elle s’est traduite par l’intégration du Mentorat Actif à l’offre de services de plusieurs organismes, mais aussi par des investissements concrets visant à soutenir son déploiement. À titre d’exemple, le Parrainage civique du Trois-Rivières métropolitain a créé un poste dédié à raison de quatre jours par semaine, tandis que le Parrainage civique Champlain a consacré deux jours par semaine à cette nouvelle pratique.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="section-2" class="space-y-6 pt-6">
+                <h2 class="academic-text text-2xl md:text-3xl font-bold text-burgundy-dark border-b border-academic-border/60 pb-2">
+                    2. De nouveaux outils par et pour les organismes
+                </h2>
+                
+                <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                    <p>
+                        Bien que les outils développés dans le cadre de la recherche offrent des repères concrets pour soutenir la mise en œuvre du Mentorat Actif, cette approche a été conçue de manière à pouvoir s’adapter aux réalités de chaque organisme. Les équipes ont ainsi fait évoluer et bonifié les outils proposés afin qu’ils répondent à leurs contextes, à leurs besoins et aux caractéristiques des personnes qu’elles accompagnent. Cette appropriation a notamment conduit au développement de nouveaux outils et à l’adaptation de ceux issus de la recherche. En voici quelques exemples :
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
+                    <div class="bg-cream-card p-5 rounded-xl border border-academic-border shadow-xs space-y-3">
+                        <div class="w-8 h-8 rounded-full bg-burgundy text-white flex items-center justify-center font-bold text-sm">1</div>
+                        <h3 class="font-bold text-burgundy-dark text-base">Parrainage civique du Trois-Rivières métropolitain</h3>
+                        <p class="text-xs text-academic-muted leading-relaxed">
+                            A adapté le guide de mise en place afin qu’il reflète sa réalité organisationnelle. Création d’un formulaire de décharge relatif à la vérification des antécédents judiciaires et d’un aide-mémoire (transport, horaire, adresse, etc.).
+                        </p>
+                    </div>
+
+                    <div class="bg-cream-card p-5 rounded-xl border border-academic-border shadow-xs space-y-3">
+                        <div class="w-8 h-8 rounded-full bg-burgundy text-white flex items-center justify-center font-bold text-sm">2</div>
+                        <h3 class="font-bold text-burgundy-dark text-base">Jumeleurs de Montréal</h3>
+                        <p class="text-xs text-academic-muted leading-relaxed">
+                            Ont conçu un dépliant de recrutement visant à faire connaître le Mentorat Actif et à faciliter l’engagement de nouveaux groupes et personnes participantes.
+                        </p>
+                    </div>
+
+                    <div class="bg-cream-card p-5 rounded-xl border border-academic-border shadow-xs space-y-3">
+                        <div class="w-8 h-8 rounded-full bg-burgundy text-white flex items-center justify-center font-bold text-sm">3</div>
+                        <h3 class="font-bold text-burgundy-dark text-base">Centre de parrainage civique de Québec</h3>
+                        <p class="text-xs text-academic-muted leading-relaxed">
+                            A développé un questionnaire permettant d’identifier les intérêts, les talents et les expériences des personnes intéressées, ainsi qu’un répertoire de milieux de loisirs et de bénévolat.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="section-3" class="space-y-6 pt-6">
+                <h2 class="academic-text text-2xl md:text-3xl font-bold text-burgundy-dark border-b border-academic-border/60 pb-2">
+                    3. L'importance de l’accompagnement pour les organismes
+                </h2>
+                
+                <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                    <p>
+                        L’accompagnement des organismes de parrainage civique qui souhaitent mettre en œuvre le Mentorat Actif demeure un facteur clé de sa réussite. Au-delà des outils développés dans le cadre de la recherche, les organismes bénéficient d’un soutien continu qui favorise leur appropriation de l’approche, le partage d’expertise et la résolution des défis rencontrés sur le terrain.
+                    </p>
+                </div>
+
+                <!-- Conceptual Card 2: Support & Community of Practice Structure -->
+                <div class="my-8 bg-cream-card border border-academic-border rounded-xl p-6 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-2 text-burgundy font-semibold text-sm uppercase tracking-wider">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        <span>Figure explicative 2 — Architecture de l'accompagnement et de la communauté de pratique</span>
+                    </div>
+                    
+                    <div class="w-full bg-cream p-4 rounded-lg border border-academic-border/55 overflow-x-auto">
+                        <svg viewBox="0 0 700 280" class="w-full h-auto min-w-[600px]">
+                            <rect width="700" height="280" fill="#fbf9f4" rx="8" />
+                            
+                            <!-- Center box: Regroupement & Monique Maltais -->
+                            <rect x="235" y="20" width="230" height="60" rx="8" fill="#7A2222" />
+                            <text x="350" y="45" font-family="Inter, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Regroupement & Monique Maltais</text>
+                            <text x="350" y="62" font-family="Inter, sans-serif" font-size="10" fill="#f3e6e6" text-anchor="middle">Personne-ressource & accompagnement</text>
+                            
+                            <!-- Branching lines -->
+                            <path d="M 350 80 L 350 115 L 175 115 L 175 130" stroke="#7A2222" stroke-width="2" fill="none" />
+                            <path d="M 350 115 L 525 115 L 525 130" stroke="#7A2222" stroke-width="2" fill="none" />
+                            
+                            <!-- Left Node: Rencontres Collectives -->
+                            <g transform="translate(60, 130)">
+                                <rect width="230" height="120" rx="8" fill="#f5f2e9" stroke="#d4ccb8" stroke-width="2" />
+                                <text x="115" y="30" font-family="Inter, sans-serif" font-size="12" font-weight="bold" fill="#2c2925" text-anchor="middle">Rencontres Collectives</text>
+                                <text x="115" y="50" font-family="Inter, sans-serif" font-size="10" fill="#635e57" text-anchor="middle">4 fois par année (Pairs)</text>
+                                <text x="115" y="80" font-family="Inter, sans-serif" font-size="10" fill="#2c2925" text-anchor="middle">• Partager réussites et défis</text>
+                                <text x="115" y="98" font-family="Inter, sans-serif" font-size="10" fill="#2c2925" text-anchor="middle">• Résolution collective de cas</text>
+                                <text x="115" y="116" font-family="Inter, sans-serif" font-size="10" fill="#2c2925" text-anchor="middle">• Cohérence de l'approche</text>
+                            </g>
+                            
+                            <!-- Right Node: Accompagnement Individualisé -->
+                            <g transform="translate(410, 130)">
+                                <rect width="230" height="120" rx="8" fill="#f3e6e6" stroke="#9e3535" stroke-width="2" />
+                                <text x="115" y="30" font-family="Inter, sans-serif" font-size="12" font-weight="bold" fill="#7A2222" text-anchor="middle">Suivi Individualisé</text>
+                                <text x="115" y="50" font-family="Inter, sans-serif" font-size="10" fill="#635e57" text-anchor="middle">Téléphone / Visioconférence</text>
+                                <text x="115" y="80" font-family="Inter, sans-serif" font-size="10" fill="#2c2925" text-anchor="middle">• Soutien au financement</text>
+                                <text x="115" y="98" font-family="Inter, sans-serif" font-size="10" fill="#2c2925" text-anchor="middle">• Relecture de documents</text>
+                                <text x="115" y="116" font-family="Inter, sans-serif" font-size="10" fill="#2c2925" text-anchor="middle">• Maintien de la motivation</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="text-xs text-academic-muted italic text-center">
+                        Schéma de la structure double d'accompagnement : espaces collectifs et soutien personnalisé.
+                    </p>
+                </div>
+
+                <div class="space-y-6 pt-4">
+                    <h3 class="academic-text text-xl font-semibold text-burgundy">Rencontres collectives de suivi</h3>
+                    <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                        <p>
+                            Les rencontres collectives de suivi réunissent les personnes intervenantes engagées dans la mise en œuvre du Mentorat Actif, la direction du Regroupement ainsi que Monique Maltais, qui accompagne les organismes dans le déploiement et l’évolution de l’approche. Tenues environ quatre fois par année, elles constituent un espace privilégié d’échange, de réflexion et d’apprentissage entre pairs, permettant aux organismes de partager leurs expériences, de résoudre collectivement les défis rencontrés et de soutenir une mise en œuvre cohérente du Mentorat Actif.
+                        </p>
+                        <p>Les rencontres permettent notamment :</p>
+                        <ul class="list-disc pl-6 space-y-2 text-base">
+                            <li>de partager les réussites, les défis et les leçons apprises;</li>
+                            <li>de réfléchir collectivement à des situations rencontrées dans les milieux;</li>
+                            <li>d’échanger sur l’adaptation et le développement d’outils;</li>
+                            <li>d’assurer une mise en œuvre cohérente avec les principes au cœur du Mentorat Actif.</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="academic-text text-xl font-semibold text-burgundy pt-4">Accompagnement individualisé offert par le Regroupement</h3>
+                    <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                        <p>
+                            En complément des rencontres collectives, Monique Maltais offre un accompagnement individualisé aux organismes selon leurs besoins. Réalisés par téléphone, visioconférence ou courriel, ces échanges constituent un soutien précieux, particulièrement lors des premières étapes d’implantation. Grâce à son rôle dans le développement et l’implantation du Mentorat Actif dans le cadre de la recherche et à sa connaissance approfondie du réseau du parrainage civique, elle agit à la fois comme personne-ressource, accompagnatrice et courroie de transmission entre les organismes. Son accompagnement contribue à maintenir l’élan des équipes, à soutenir leur réflexion et à assurer une cohérence dans le déploiement de l’approche à l’échelle du Québec.
+                        </p>
+                        <p>Concrètement, cet accompagnement peut prendre différentes formes, notamment :</p>
+                        <ul class="list-disc pl-6 space-y-2 text-base">
+                            <li>Des échanges sur des situations particulières;</li>
+                            <li>Du soutien à la recherche de financement et à la rédaction de demandes de financement pour assurer l'actualisation du Mentorat Actif;</li>
+                            <li>De la relecture de documents ou de formulaires développés par les organismes;</li>
+                            <li>Des suivis réguliers pour accompagner les intervenantes et maintenir leur motivation.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="section-4" class="space-y-6 pt-6">
+                <h2 class="academic-text text-2xl md:text-3xl font-bold text-burgundy-dark border-b border-academic-border/60 pb-2">
+                    4. Maintenir le lien de confiance
+                </h2>
+                
+                <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                    <p>
+                        La poursuite du Mentorat Actif sur le long terme repose également sur une relation de confiance établie entre les organismes, les personnes intervenantes et le Regroupement québécois du parrainage civique. Au fil des ans, le Regroupement a développé des liens étroits avec ses organismes membres, ce qui facilite l’intégration du Mentorat Actif comme nouvelle pratique au sein de l’offre de services. Dans ce contexte, le rôle joué par Monique Maltais est particulièrement important. Grâce à sa connaissance approfondie du milieu du parrainage civique, à son expérience de plus de 30 ans en intervention et en gestion du Centre de parrainage civique de Québec ainsi qu’à son implication dans la recherche ayant mené au développement et à l’expérimentation du Mentorat Actif, elle représente une personne-ressource de confiance.
+                    </p>
+                </div>
+
+                <!-- Conceptual Card 3: Trust & Support Pillars -->
+                <div class="my-8 bg-cream-card border border-academic-border rounded-xl p-6 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-2 text-burgundy font-semibold text-sm uppercase tracking-wider">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        <span>Figure explicative 3 — Piliers du lien de confiance et rôle de la personne-ressource</span>
+                    </div>
+                    
+                    <div class="w-full bg-cream p-4 rounded-lg border border-academic-border/55 overflow-x-auto">
+                        <svg viewBox="0 0 700 220" class="w-full h-auto min-w-[600px]">
+                            <rect width="700" height="220" fill="#fbf9f4" rx="8" />
+                            <!-- Pillar 1 -->
+                            <g transform="translate(40, 20)">
+                                <rect width="180" height="175" rx="8" fill="#f5f2e9" stroke="#d4ccb8" stroke-width="2" />
+                                <rect x="15" y="15" width="150" height="30" rx="4" fill="#e4decb" />
+                                <text x="90" y="35" font-family="Inter, sans-serif" font-size="11" font-weight="bold" fill="#2c2925" text-anchor="middle">Expérience & Réseau</text>
+                                <text x="90" y="75" font-family="Inter, sans-serif" font-size="10" fill="#635e57" text-anchor="middle">+30 ans d'intervention</text>
+                                <text x="90" y="95" font-family="Inter, sans-serif" font-size="10" fill="#635e57" text-anchor="middle">et de gestion</text>
+                                <text x="90" y="130" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#7A2222" text-anchor="middle">Personne-ressource</text>
+                            </g>
+                            <!-- Pillar 2 -->
+                            <g transform="translate(260, 20)">
+                                <rect width="180" height="175" rx="8" fill="#f3e6e6" stroke="#9e3535" stroke-width="2" />
+                                <rect x="15" y="15" width="150" height="30" rx="4" fill="#7A2222" />
+                                <text x="90" y="35" font-family="Inter, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">Espace Sécurisant</text>
+                                <text x="90" y="75" font-family="Inter, sans-serif" font-size="10" fill="#2c2925" text-anchor="middle">Accompagnement</text>
+                                <text x="90" y="95" font-family="Inter, sans-serif" font-size="10" fill="#2c2925" text-anchor="middle">bienveillant</text>
+                                <text x="90" y="130" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#7A2222" text-anchor="middle">Cadre sans jugement</text>
+                            </g>
+                            <!-- Pillar 3 -->
+                            <g transform="translate(480, 20)">
+                                <rect width="180" height="175" rx="8" fill="#f5f2e9" stroke="#d4ccb8" stroke-width="2" />
+                                <rect x="15" y="15" width="150" height="30" rx="4" fill="#e4decb" />
+                                <text x="90" y="35" font-family="Inter, sans-serif" font-size="11" font-weight="bold" fill="#2c2925" text-anchor="middle">Évolution Durable</text>
+                                <text x="90" y="75" font-family="Inter, sans-serif" font-size="10" fill="#635e57" text-anchor="middle">Avancer à son</text>
+                                <text x="90" y="95" font-family="Inter, sans-serif" font-size="10" fill="#635e57" text-anchor="middle">propre rythme</text>
+                                <text x="90" y="130" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#3b4d61" text-anchor="middle">Pilier du déploiement</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="text-xs text-academic-muted italic text-center">
+                        Illustration : la confiance comme fondement de l'expérimentation et du développement des compétences.
+                    </p>
+                </div>
+
+                <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                    <p>
+                        Son accompagnement bienveillant facilite les échanges, favorise le partage des défis rencontrés sur le terrain et offre aux personnes intervenantes un espace sécurisant pour réfléchir à leur pratique, poser leurs questions et explorer différentes pistes de solution. Cette proximité permet aux organismes d’avancer à leur propre rythme tout en déployant des pratiques fidèles aux principes au cœur du Mentorat Actif. La confiance constitue ainsi l’un des piliers du déploiement du Mentorat Actif. Elle favorise l’expérimentation, soutient le développement des compétences des intervenantes et crée les conditions nécessaires à l’évolution durable des pratiques au sein des organismes.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="section-5" class="space-y-6 pt-6">
+                <h2 class="academic-text text-2xl md:text-3xl font-bold text-burgundy-dark border-b border-academic-border/60 pb-2">
+                    5. Une évolution des pratiques
+                </h2>
+                
+                <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                    <p>
+                        Après une année de mise en œuvre, il apparaît clairement que l’adoption du Mentorat Actif contribue à faire évoluer certaines pratiques au sein des organismes de parrainage civique. Cette évolution demeure toutefois graduelle et se construit au fil des expérimentations, des réflexions et des apprentissages réalisés par les équipes. L’intégration du Mentorat Actif amène les organismes à réfléchir autrement aux façons de soutenir l’inclusion sociale. Cette approche invite les personnes intervenantes à explorer de nouvelles façons d’accompagner les personnes, à mobiliser davantage les ressources déjà présentes dans la communauté et à considérer l’inclusion comme une responsabilité collective portée par un groupe plutôt que par une seule personne. Elle influence également la manière d’aborder le jumelage, le rôle des personnes accompagnées, celui des membres des groupes d’accueil ainsi que les pratiques d’accompagnement mises en place.
+                    </p>
+                </div>
+
+                <!-- Conceptual Card 4: Practice Evolution Cycle -->
+                <div class="my-8 bg-cream-card border border-academic-border rounded-xl p-6 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-2 text-burgundy font-semibold text-sm uppercase tracking-wider">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                        <span>Figure explicative 4 — Cycle graduel de l'évolution des pratiques</span>
+                    </div>
+                    
+                    <div class="w-full bg-cream p-4 rounded-lg border border-academic-border/55 overflow-x-auto">
+                        <svg viewBox="0 0 700 180" class="w-full h-auto min-w-[600px]">
+                            <rect width="700" height="180" fill="#fbf9f4" rx="8" />
+                            <!-- Step 1 -->
+                            <g transform="translate(30, 30)">
+                                <rect width="125" height="110" rx="8" fill="#f5f2e9" stroke="#d4ccb8" stroke-width="2" />
+                                <text x="62" y="30" font-family="Inter, sans-serif" font-size="11" font-weight="bold" fill="#2c2925" text-anchor="middle">1. Expérimentation</text>
+                                <text x="62" y="60" font-family="Inter, sans-serif" font-size="9" fill="#635e57" text-anchor="middle">Mise en œuvre</text>
+                                <text x="62" y="75" font-family="Inter, sans-serif" font-size="9" fill="#635e57" text-anchor="middle">sur le terrain</text>
+                            </g>
+                            <path d="M 160 85 L 185 85" stroke="#7A2222" stroke-width="2" />
+                            
+                            <!-- Step 2 -->
+                            <g transform="translate(190, 30)">
+                                <rect width="125" height="110" rx="8" fill="#f5f2e9" stroke="#d4ccb8" stroke-width="2" />
+                                <text x="62" y="30" font-family="Inter, sans-serif" font-size="11" font-weight="bold" fill="#2c2925" text-anchor="middle">2. Réflexion</text>
+                                <text x="62" y="60" font-family="Inter, sans-serif" font-size="9" fill="#635e57" text-anchor="middle">Échanges entre</text>
+                                <text x="62" y="75" font-family="Inter, sans-serif" font-size="9" fill="#635e57" text-anchor="middle">intervenantes</text>
+                            </g>
+                            <path d="M 320 85 L 345 85" stroke="#7A2222" stroke-width="2" />
+                            
+                            <!-- Step 3 -->
+                            <g transform="translate(350, 30)">
+                                <rect width="125" height="110" rx="8" fill="#f3e6e6" stroke="#9e3535" stroke-width="2" />
+                                <text x="62" y="30" font-family="Inter, sans-serif" font-size="11" font-weight="bold" fill="#7A2222" text-anchor="middle">3. Apprentissage</text>
+                                <text x="62" y="60" font-family="Inter, sans-serif" font-size="9" fill="#2c2925" text-anchor="middle">Soutien du</text>
+                                <text x="62" y="75" font-family="Inter, sans-serif" font-size="9" fill="#2c2925" text-anchor="middle">Regroupement</text>
+                            </g>
+                            <path d="M 480 85 L 505 85" stroke="#7A2222" stroke-width="2" />
+                            
+                            <!-- Step 4 -->
+                            <g transform="translate(510, 30)">
+                                <rect width="155" height="110" rx="8" fill="#7A2222" stroke="#7A2222" stroke-width="2" />
+                                <text x="77" y="30" font-family="Inter, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">4. Intégration durable</text>
+                                <text x="77" y="60" font-family="Inter, sans-serif" font-size="9" fill="#f3e6e6" text-anchor="middle">Évolution des pratiques</text>
+                                <text x="77" y="75" font-family="Inter, sans-serif" font-size="9" fill="#f3e6e6" text-anchor="middle">quotidiennes</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="text-xs text-academic-muted italic text-center">
+                        Schéma : le processus graduel d'appropriation et d'ajustement des pratiques au sein des organismes.
+                    </p>
+                </div>
+
+                <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                    <p>
+                        Au fil des expérimentations, plusieurs organismes ont d’ailleurs adapté leurs façons de faire afin de mieux soutenir la participation des personnes accompagnées dans leurs milieux de vie. Les échanges entre personnes intervenantes, les espaces de réflexion collective et l’accompagnement offert par le Regroupement québécois du parrainage civique ont contribué à nourrir cette évolution en permettant aux équipes de partager leurs expériences, d’apprendre les unes des autres et d’ajuster progressivement leurs pratiques.
+                    </p>
+                    <p>
+                        Dans ce contexte, il demeure important de poursuivre les réflexions, tant collectivement qu’au sein de chaque organisme, afin de consolider les apprentissages réalisés et de soutenir une intégration durable du Mentorat Actif dans les pratiques quotidiennes. Ainsi, le Mentorat Actif apparaît progressivement comme une façon renouvelée de penser et de soutenir l’inclusion sociale dans les organismes de parrainage civique.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section 6 -->
+            <section id="section-6" class="space-y-6 pt-6">
+                <h2 class="academic-text text-2xl md:text-3xl font-bold text-burgundy-dark border-b border-academic-border/60 pb-2">
+                    6. Une nouvelle vision de l’inclusion
+                </h2>
+                
+                <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                    <p>
+                        Si les fondements de cette réflexion ont émergé lors du projet de recherche ayant mené au développement du Mentorat Actif, c’est surtout à travers son implantation dans les organismes au cours de la dernière année que cette vision de l’inclusion a commencé à se concrétiser dans les pratiques. À force d’expérimenter l’approche, d’échanger entre pairs et de réfléchir collectivement aux défis rencontrés, les intervenantes ont progressivement été amenées à porter un regard différent sur l’inclusion sociale et sur leur rôle pour la soutenir. Cette évolution se traduit notamment par :
+                    </p>
+                </div>
+
+                <!-- Conceptual Card 5: New Vision of Inclusion -->
+                <div class="my-8 bg-cream-card border border-academic-border rounded-xl p-6 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-2 text-burgundy font-semibold text-sm uppercase tracking-wider">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        <span>Figure explicative 5 — Transformation paradigmatique de l'inclusion sociale</span>
+                    </div>
+                    
+                    <div class="w-full bg-cream p-4 rounded-lg border border-academic-border/55 overflow-x-auto">
+                        <svg viewBox="0 0 700 220" class="w-full h-auto min-w-[600px]">
+                            <rect width="700" height="220" fill="#fbf9f4" rx="8" />
+                            
+                            <!-- Left: Traditional approach -->
+                            <g transform="translate(30, 25)">
+                                <rect width="280" height="170" rx="8" fill="#f5f2e9" stroke="#d4ccb8" stroke-width="2" />
+                                <rect x="15" y="15" width="250" height="30" rx="4" fill="#e4decb" />
+                                <text x="140" y="35" font-family="Inter, sans-serif" font-size="11" font-weight="bold" fill="#2c2925" text-anchor="middle">Jumelage Traditionnel</text>
+                                <text x="140" y="75" font-family="Inter, sans-serif" font-size="10" fill="#635e57" text-anchor="middle">• Inclusion centrée sur la personne seule</text>
+                                <text x="140" y="95" font-family="Inter, sans-serif" font-size="10" fill="#635e57" text-anchor="middle">• Responsabilité individuelle</text>
+                                <text x="140" y="115" font-family="Inter, sans-serif" font-size="10" fill="#635e57" text-anchor="middle">• Relation dyadique isolée</text>
+                            </g>
+
+                            <!-- Arrow -->
+                            <g transform="translate(325, 100)">
+                                <polygon points="0,0 25,-12 25,12" fill="#7A2222" />
+                                <rect x="25" y="-4" width="15" height="8" fill="#7A2222" />
+                            </g>
+
+                            <!-- Right: Mentorat Actif -->
+                            <g transform="translate(355, 25)">
+                                <rect width="315" height="170" rx="8" fill="#f3e6e6" stroke="#9e3535" stroke-width="2" />
+                                <rect x="15" y="15" width="285" height="30" rx="4" fill="#7A2222" />
+                                <text x="157" y="35" font-family="Inter, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">Mentorat Actif (Vision Nouvelle)</text>
+                                <text x="157" y="70" font-family="Inter, sans-serif" font-size="10" fill="#2c2925" text-anchor="middle">• Adaptation des environnements</text>
+                                <text x="157" y="90" font-family="Inter, sans-serif" font-size="10" fill="#2c2925" text-anchor="middle">• Force des groupes & milieux de vie</text>
+                                <text x="157" y="110" font-family="Inter, sans-serif" font-size="10" fill="#2c2925" text-anchor="middle">• Reconnaissance du pouvoir d'agir</text>
+                                <text x="157" y="130" font-family="Inter, sans-serif" font-size="10" fill="#2c2925" text-anchor="middle">• Responsabilité collective et solidaire</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="text-xs text-academic-muted italic text-center">
+                        Schéma comparatif : le déplacement d'une charge individuelle vers une responsabilité collective d'inclusion.
+                    </p>
+                </div>
+
+                <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                    <ul class="list-disc pl-6 space-y-2 text-base">
+                        <li>une transformation de certaines façons d’intervenir auprès des personnes accompagnées;</li>
+                        <li>une ouverture à de nouvelles pratiques favorisant la participation des personnes dans leur communauté;</li>
+                        <li>une plus grande reconnaissance des capacités, des intérêts et du pouvoir d’agir des personnes ayant des besoins de soutien pour participer plus activement à la vie de leur communauté;</li>
+                        <li>une mobilisation accrue des groupes et des milieux de vie comme acteurs de l’inclusion;</li>
+                        <li>une ouverture plus grande vers la communauté et les ressources qui s’y trouvent;</li>
+                        <li>une réflexion renouvelée sur le rôle des organismes de parrainage civique dans la promotion de l’inclusion sociale.</li>
+                    </ul>
+
+                    <p>
+                        Ainsi, bien que cette transformation soit encore en cours, les constats recueillis un an après la fin de la recherche montrent que le Mentorat Actif ne constitue pas seulement une nouvelle pratique. Il contribue également à faire évoluer les façons de penser l’inclusion sociale en mettant davantage l’accent sur l’adaptation des environnements, la force des groupes et la responsabilité collective de favoriser la participation sociale.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Conclusion -->
+            <section id="conclusion" class="space-y-6 pt-6 pb-12 border-b border-academic-border">
+                <h2 class="academic-text text-2xl md:text-3xl font-bold text-burgundy-dark border-b border-academic-border/60 pb-2">
+                    Conclusion
+                </h2>
+                
+                <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                    <p>
+                        Un an plus tard, le Mentorat Actif a permis de poser des bases solides pour faire évoluer les pratiques des organismes de parrainage civique du Québec. Les constats présentés dans ce bilan montrent qu’il ne s’agit pas simplement d’une nouvelle formule de jumelage, mais bien d’une approche qui amène les organismes à réfléchir autrement aux conditions favorisant la participation sociale et l’inclusion dans les communautés.
+                    </p>
+                </div>
+
+                <!-- Conceptual Card: Synthesis Conclusion Diagram -->
+                <div class="my-8 bg-cream-card border border-academic-border rounded-xl p-6 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-2 text-burgundy font-semibold text-sm uppercase tracking-wider">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        <span>Figure de synthèse — Les piliers du Mentorat Actif et sa portée inclusive</span>
+                    </div>
+                    
+                    <div class="w-full bg-cream p-4 rounded-lg border border-academic-border/55 overflow-x-auto">
+                        <svg viewBox="0 0 700 340" class="w-full h-auto min-w-[600px]">
+                            <rect width="700" height="340" fill="#fbf9f4" rx="8" />
+                            
+                            <!-- Central Core: Mentorat Actif -->
+                            <rect x="250" y="20" width="200" height="50" rx="8" fill="#7A2222" />
+                            <text x="350" y="42" font-family="Inter, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Mentorat Actif</text>
+                            <text x="350" y="58" font-family="Inter, sans-serif" font-size="9" fill="#f3e6e6" text-anchor="middle">Bilan un an plus tard</text>
+                            
+                            <!-- Connectors to 4 pillars -->
+                            <path d="M 350 70 L 350 100" stroke="#7A2222" stroke-width="2" />
+                            
+                            <!-- 4 Pillars Grid (Y: 100 to 200) -->
+                            <!-- Pillar 1: Communauté -->
+                            <g transform="translate(30, 100)">
+                                <rect width="145" height="95" rx="6" fill="#f5f2e9" stroke="#d4ccb8" stroke-width="1.5" />
+                                <text x="72" y="25" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#7A2222" text-anchor="middle">1. Communauté</text>
+                                <text x="72" y="48" font-family="Inter, sans-serif" font-size="9" fill="#2c2925" text-anchor="middle">Force des groupes</text>
+                                <text x="72" y="64" font-family="Inter, sans-serif" font-size="9" fill="#635e57" text-anchor="middle">& milieux de vie</text>
+                                <text x="72" y="80" font-family="Inter, sans-serif" font-size="9" fill="#635e57" text-anchor="middle">accueillants</text>
+                            </g>
+                            
+                            <!-- Pillar 2: Responsabilité Collective -->
+                            <g transform="translate(195, 100)">
+                                <rect width="145" height="95" rx="6" fill="#f5f2e9" stroke="#d4ccb8" stroke-width="1.5" />
+                                <text x="72" y="25" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#7A2222" text-anchor="middle">2. Resp. Collective</text>
+                                <text x="72" y="48" font-family="Inter, sans-serif" font-size="9" fill="#2c2925" text-anchor="middle">Partage de l'inclusion</text>
+                                <text x="72" y="64" font-family="Inter, sans-serif" font-size="9" fill="#635e57" text-anchor="middle">au-delà de la</text>
+                                <text x="72" y="80" font-family="Inter, sans-serif" font-size="9" fill="#635e57" text-anchor="middle">dyade individuelle</text>
+                            </g>
+                            
+                            <!-- Pillar 3: Accompagnement & Confiance -->
+                            <g transform="translate(360, 100)">
+                                <rect width="145" height="95" rx="6" fill="#f3e6e6" stroke="#9e3535" stroke-width="1.5" />
+                                <text x="72" y="25" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#7A2222" text-anchor="middle">3. Accompagnement</text>
+                                <text x="72" y="48" font-family="Inter, sans-serif" font-size="9" fill="#2c2925" text-anchor="middle">Communauté de pratique</text>
+                                <text x="72" y="64" font-family="Inter, sans-serif" font-size="9" fill="#635e57" text-anchor="middle">& lien de confiance</text>
+                                <text x="72" y="80" font-family="Inter, sans-serif" font-size="9" fill="#635e57" text-anchor="middle">(M. Maltais / Regr.)</text>
+                            </g>
+                            
+                            <!-- Pillar 4: Évolution des Pratiques -->
+                            <g transform="translate(525, 100)">
+                                <rect width="145" height="95" rx="6" fill="#f5f2e9" stroke="#d4ccb8" stroke-width="1.5" />
+                                <text x="72" y="25" font-family="Inter, sans-serif" font-size="10" font-weight="bold" fill="#7A2222" text-anchor="middle">4. Évolution</text>
+                                <text x="72" y="48" font-family="Inter, sans-serif" font-size="9" fill="#2c2925" text-anchor="middle">Transformation</text>
+                                <text x="72" y="64" font-family="Inter, sans-serif" font-size="9" fill="#635e57" text-anchor="middle">graduelle des</text>
+                                <text x="72" y="80" font-family="Inter, sans-serif" font-size="9" fill="#635e57" text-anchor="middle">pratiques d'intervention</text>
+                            </g>
+
+                            <!-- Connecting lines down to Vision Renouvelée -->
+                            <path d="M 350 195 L 350 220" stroke="#7A2222" stroke-width="2" />
+                            
+                            <!-- Bottom Target: Vision Renouvelée de l'Inclusion Sociale -->
+                            <rect x="150" y="220" width="400" height="90" rx="8" fill="#7A2222" />
+                            <text x="350" y="245" font-family="Inter, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Vision Renouvelée de l'Inclusion Sociale</text>
+                            <text x="350" y="268" font-family="Inter, sans-serif" font-size="10" fill="#f3e6e6" text-anchor="middle">Participation ne dépendant plus seulement des capacités individuelles,</text>
+                            <text x="350" y="286" font-family="Inter, sans-serif" font-size="10" fill="#f3e6e6" text-anchor="middle">mais de notre volonté collective de créer des communautés inclusives et équitables.</text>
+                        </svg>
+                    </div>
+                    <p class="text-xs text-academic-muted italic text-center">
+                        Synthèse conceptuelle : articulation des quatre piliers du Mentorat Actif vers la vision renouvelée de l'inclusion sociale.
+                    </p>
+                </div>
+
+                <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
+                    <p>
+                        L’expérience démontre toutefois que l’implantation d’une telle pratique nécessite du temps, de l’accompagnement et des occasions régulières de dialogue et d’apprentissage collectif. Le maintien des communautés de pratique, de l’accompagnement individualisé, le développement d’outils et le maintien des liens de confiance entre les organismes et le Regroupement québécois du parrainage civique demeurera essentiel pour soutenir cette évolution au cours des prochaines années.
+                    </p>
+                    <p>
+                        Au-delà des organismes de parrainage civique, le Mentorat Actif nous rappelle une idée fondamentale : l’inclusion ne repose pas uniquement sur les personnes ayant des besoins de soutien ni sur les personnes intervenantes qui les accompagnent. Elle repose également sur la capacité des communautés à s’ouvrir, à s’adapter et à reconnaître la contribution de chacun et chacune. Les résultats observés montrent qu’en misant sur la force des groupes, sur les relations réciproques et sur la mobilisation des ressources déjà présentes dans la communauté, il est possible de créer des milieux plus accueillants, plus équitables et plus inclusifs.
+                    </p>
+                    <p>
+                        Le Mentorat Actif ouvre ainsi la voie à une vision renouvelée de l’inclusion sociale : une vision où la participation ne dépend pas seulement des capacités des personnes, mais aussi de notre volonté collective de créer des communautés où chacun et chacune peut trouver sa place, contribuer à la vie collective et être pleinement reconnu comme citoyen ou citoyenne à part entière.
+                    </p>
+                </div>
+
+                <!-- Footer academic metadata -->
+                <div class="text-xs text-academic-muted pt-6 flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
+                    <span>© Regroupement québécois du parrainage civique & Chaire Autodétermination et Handicap</span>
+                    <span>Document académique officiel — Édition 2026</span>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Active Navigation Highlight Script -->
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section[id]').forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
