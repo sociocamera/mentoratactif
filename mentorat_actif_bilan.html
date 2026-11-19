@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Mentorat Actif, un an plus tard — Bilan des changements observés</title>
-    <!-- Tailwind CSS CDN -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; frame-src https://drive.google.com; connect-src https://script.google.com; object-src 'none';">
+    <title>Le Mentorat Actif, un an plus tard | Revue de Sociologie Visuelle</title>
+    <meta name="description" content="Bilan des changements observés un an après l’implantation du Mentorat Actif dans les organismes de parrainage civique du Québec.">
+    <meta name="keywords" content="inclusion sociale, accessibilité, sociologie visuelle, mentorat actif, parrainage civique, CIRRIS, PSVI">
+    <link rel="canonical" href="https://doi.org/10.13140/RG.2.2.35504.53768">
+
+    <!-- Tailwind CSS CDN & Google Fonts pour préserver à l'identique le formatage de mentorat-actif-bilan.html -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            corePlugins: {
+                preflight: false,
+            },
             theme: {
                 extend: {
                     colors: {
@@ -36,157 +44,470 @@
             }
         }
     </script>
-    <!-- Google Fonts: Lora (academic serif) and Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --bg-color: #FAF6EF;
+            --text-color: #2b2b2b;
+            --primary-color: #1a202c;
+            --accent-color: #4a5568;
+            --border-color: #e2e8f0;
+            --card-bg: #FAF6EF;
+            --hover-border: #cbd5e0;
+            --max-width: 1400px;
+            --sidebar-width: 320px;
+            --topbar-height: 60px;
+            --modal-header-bg: #7a2222; /* Bordeaux de référence */
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
+            font-family: "Georgia", "Cambria", "Times New Roman", serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Barre horizontale permanente supérieure : toute la largeur de la page */
+        .top-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--topbar-height);
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            display: grid;
+            grid-template-columns: var(--sidebar-width) 1fr auto;
+            align-items: center;
+            padding: 0;
+            z-index: 1100;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .top-navbar-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            letter-spacing: 0.02em;
+            padding-left: 1.5rem;
+            border-right: 1px solid var(--border-color);
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-navbar-location {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            background-color: #f2ede4;
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            margin-right: 2.5rem;
+        }
+
+        /* Colonne latérale gauche permanente sous la barre fixe du haut */
+        aside.sidebar {
+            position: fixed;
+            top: var(--topbar-height);
+            left: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--topbar-height));
+            background-color: #f5f0e6;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .btn-home {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+            background-color: #7a2222;
+            color: #fff;
+            border: none;
+            padding: 0.85rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .btn-home svg {
+            position: absolute;
+            left: 1rem;
+        }
+
+        .btn-home:hover {
+            background-color: #5e1a1a;
+        }
+
+        .sidebar-info-section {
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sidebar-card {
+            background-color: #FAF6EF;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            text-align: justify;
+        }
+
+        .sidebar-card.editor-card {
+            flex-direction: row;
+            align-items: center;
+            gap: 0.75rem;
+            text-align: left;
+        }
+
+        .editor-info h4 {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-bottom: 0.15rem;
+        }
+
+        .editor-info p {
+            font-size: 0.78rem;
+            color: var(--accent-color);
+            line-height: 1.4;
+        }
+
+        .sidebar-nav {
+            padding: 1.25rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            flex: 1;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--primary-color);
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: left;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: #eae3d5;
+            border-color: var(--hover-border);
+        }
+
+        .submenu {
+            display: none;
+            flex-direction: column;
+            gap: 0.4rem;
+            padding-left: 1rem;
+            margin-top: -0.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .submenu.open {
+            display: flex;
+        }
+
+        .submenu-item {
+            font-size: 0.82rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            padding: 0.4rem 0.75rem;
+            border-radius: 4px;
+            transition: background-color 0.15s, color 0.15s;
+            border-left: 2px solid #d4c5b9;
+        }
+
+        .submenu-item:hover {
+            background-color: #eae3d5;
+            color: var(--primary-color);
+            border-left-color: var(--primary-color);
+        }
+
+        .page-nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            padding-left: 0.25rem;
+        }
+
+        .page-nav-subitem {
+            padding-left: 1.35rem;
+            font-size: 0.79rem;
+            border-left-style: dashed;
+        }
+
+        /* Conteneur principal à droite, décalé pour laisser place à la sidebar et topbar */
+        .main-wrapper {
+            margin-left: var(--sidebar-width);
+            margin-top: var(--topbar-height);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            width: calc(100% - var(--sidebar-width));
+            padding: 2rem;
             font-family: 'Inter', sans-serif;
-            background-color: #fbf9f4;
             color: #2c2925;
         }
-        .academic-text {
+
+        .main-wrapper .academic-text {
             font-family: 'Lora', serif;
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+
+        .main-wrapper button {
+            border: none;
+            cursor: pointer;
         }
-        ::-webkit-scrollbar-track {
-            background: #f0ece1;
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            padding-left: 2rem;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #d4ccb8;
-            border-radius: 4px;
+
+        .btn-header {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: 1px solid var(--primary-color);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: background-color 0.2s;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #7A2222;
+
+        .btn-header.secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border-color: var(--border-color);
         }
-        .nav-link.active {
-            color: #7A2222;
+
+        .btn-header.secondary:hover {
+            background-color: #f2ede4;
+            border-color: var(--hover-border);
+        }
+
+        /* Styles harmonisés des fenêtres modales selon l'image de référence */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+        }
+
+        .modal-container {
+            background: var(--bg-color);
+            width: 100%;
+            max-width: 900px;
+            height: 85vh;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 1px solid #d4c5b9;
+        }
+
+        .modal-header {
+            padding: 1.25rem 1.5rem;
+            background: var(--modal-header-bg);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .modal-header h3 {
+            font-size: 1.05rem;
             font-weight: 600;
-            background-color: #f3e6e6;
-            border-left: 3px solid #7A2222;
+            color: #fff;
+        }
+
+        .modal-close {
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #fff;
+            opacity: 0.85;
+            transition: opacity 0.2s;
+        }
+
+        .modal-close:hover {
+            opacity: 1;
+        }
+
+        .modal-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: var(--bg-color);
+        }
+
+        .pdf-frame, .video-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 1200px) {
+            :root { --sidebar-width: 0px; }
+            .top-navbar { left: 0; padding: 0 1rem; grid-template-columns: 1fr auto; }
+            .top-navbar-title { display: none; }
+            aside.sidebar { transform: translateX(-100%); transition: transform 0.3s ease; }
+            aside.sidebar.mobile-open { transform: translateX(0); }
+            .main-wrapper { margin-left: 0; width: 100%; }
         }
     </style>
 </head>
-<body class="bg-cream text-academic-text antialiased selection:bg-burgundy selection:text-white">
+<body>
 
-    <!-- 1. Top Fixed Navigation Bar -->
-    <header class="fixed top-0 left-0 right-0 h-16 bg-cream-card/95 backdrop-blur-md border-b border-academic-border z-50 flex items-center px-4 md:px-8 shadow-sm">
-        <div class="max-w-7xl mx-auto w-full flex items-center justify-between">
-            <div class="flex items-center space-x-3 overflow-hidden">
-                <span class="flex-shrink-0 w-3 h-3 rounded-full bg-burgundy"></span>
-                <h1 class="academic-text text-sm md:text-base font-semibold text-burgundy-dark truncate tracking-tight">
-                    Le Mentorat Actif, un an plus tard — Bilan des changements observés un an après l’implantation
-                </h1>
-            </div>
-            <div class="hidden lg:flex items-center space-x-4 text-xs font-medium text-academic-muted">
-                <span>Regroupement québécois du parrainage civique</span>
-                <span>•</span>
-                <span>Université Laval & UQTR</span>
-            </div>
+    <!-- Barre horizontale permanente supérieure -->
+    <header class="top-navbar">
+        <div class="top-navbar-title">Revue Sociologie Visuelle</div>
+        <div class="header-actions">
+            <button class="btn-header secondary" onclick="openModal('video', 'Présentation introductive — Vidéo', 'https://drive.google.com/file/d/10Va3etjn9wZIqrVnByyNXDVM-XPKOHkK/preview?autoplay=1')">
+                <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Visionner la vidéo de présentation
+            </button>
+            <button class="btn-header secondary" onclick="openProposalModal('article')">
+                <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                Proposer un projet de captation ou un article
+            </button>
+            <button class="btn-header secondary" onclick="openModal('pdf', 'Télécharger le numéro complet', 'https://drive.google.com/file/d/1d3ZUnnEwYomQ1VRQ1lF8XNei88HelQvy/preview')">
+                <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Télécharger le numéro
+            </button>
         </div>
+        <div class="top-navbar-location" id="locationIndicator">Bilans</div>
     </header>
 
-    <!-- Main Container with Top Padding for Fixed Header -->
-    <div class="pt-16 min-h-screen flex flex-col lg:flex-row max-w-[1600px] mx-auto">
+    <!-- Colonne latérale gauche permanente -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="https://inclusionsociale.com/#theme-5" class="btn-home">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                INCLUSION SOCIALE
+            </a>
+        </div>
 
-        <!-- 2. Left Permanent Sticky Sidebar -->
-        <aside class="lg:w-80 xl:w-96 bg-cream-dark/60 border-r border-academic-border lg:h-[calc(100vh-4rem)] lg:sticky lg:top-16 flex flex-col overflow-y-auto p-6 space-y-6 flex-shrink-0">
-            
-            <!-- Authors Section -->
-            <div class="space-y-4 pb-6 border-b border-academic-border">
-                <a href="https://inclusionsociale.com/" class="inline-flex items-center space-x-2 px-3 py-2 bg-burgundy text-white rounded-lg text-xs font-semibold uppercase tracking-wider hover:bg-burgundy-dark transition-colors shadow-xs w-full justify-center">
-                    <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                    <span class="truncate">Inclusion Sociale</span>
-                </a>
-                
-                <div class="space-y-4">
-                    <!-- Author 1: Monique Maltais -->
-                    <div class="flex items-start space-x-3 bg-cream p-3 rounded-lg border border-academic-border shadow-xs">
-                        <img src="https://raw.githubusercontent.com/sociocamera/mentoratactif/images/Maltais_Monique.jpg" alt="Monique Maltais" class="w-12 h-12 rounded-full object-cover border border-burgundy/30 flex-shrink-0" onerror="this.src='https://placehold.co/120x120/7A2222/ffffff?text=MM'">
-                        <div class="text-xs">
-                            <h3 class="font-bold text-academic-text">Monique Maltais</h3>
-                            <p class="text-academic-muted mt-0.5 leading-relaxed">Anciennement coordonnatrice du Centre de parrainage civique de Québec, Responsable de l’application du Mentorat Actif au Regroupement québécois du parrainage civique.</p>
-                        </div>
-                    </div>
+        <div class="sidebar-info-section">
+            <div style="font-size: 0.72rem; color: #718096; text-align: left; margin-bottom: 0.05rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                DOI : <a href="https://doi.org/10.13140/RG.2.2.35504.53768" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; opacity: 0.85;">10.13140/RG.2.2.35504.53768</a>
+            </div>
 
-                    <!-- Author 2: Élise Milot -->
-                    <div class="flex items-start space-x-3 bg-cream p-3 rounded-lg border border-academic-border shadow-xs">
-                        <img src="https://raw.githubusercontent.com/sociocamera/mentoratactif/images/Milot_Elise.jpg" alt="Élise Milot" class="w-12 h-12 rounded-full object-cover border border-burgundy/30 flex-shrink-0" onerror="this.src='https://placehold.co/120x120/5c4033/ffffff?text=EM'">
-                        <div class="text-xs">
-                            <h3 class="font-bold text-academic-text">Élise Milot</h3>
-                            <p class="text-academic-muted mt-0.5 leading-relaxed">Professeure titulaire à l’École de travail social et de criminologie de l’Université Laval et cotitulaire de la Chaire Autodétermination et Handicap.</p>
-                        </div>
-                    </div>
+            <div class="sidebar-card editor-card">
+                <div class="editor-info">
+                    <h4>Éditeurs</h4>
+                    <p><b>François Routhier & Pierre Fraser</b></p>
+                    <p>Plus de 18 équipes de recherche mobilisées afin de saisir comment le milieu façonne et articule l'accès aux services et à l'inclusion sociale.</p>
+                </div>
+            </div>
+        </div>
 
-                    <!-- Author 3: Laurence Ouellet -->
-                    <div class="flex items-start space-x-3 bg-cream p-3 rounded-lg border border-academic-border shadow-xs">
-                        <img src="https://raw.githubusercontent.com/sociocamera/mentoratactif/images/Ouellet_Laurence.jpg" alt="Laurence Ouellet" class="w-12 h-12 rounded-full object-cover border border-burgundy/30 flex-shrink-0" onerror="this.src='https://placehold.co/120x120/3b4d61/ffffff?text=LO'">
-                        <div class="text-xs">
-                            <h3 class="font-bold text-academic-text">Laurence Ouellet</h3>
-                            <p class="text-academic-muted mt-0.5 leading-relaxed">Agente de recherche, Chaire Autodétermination et Handicap, UQTR.</p>
-                        </div>
-                    </div>
+        <div class="sidebar-nav">
+            <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #7a2222; letter-spacing: 0.05em; margin-bottom: 0.5rem; padding-left: 0.25rem;">NAVIGATION SUR LE SITE</div>
+
+            <div>
+                <button class="nav-btn" onclick="toggleSubmenu(event, 'accessibilitySubmenu', 'submenuArrow')">
+                    <span>Penser l'accessibilité</span>
+                    <svg id="submenuArrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="submenu" id="accessibilitySubmenu">
+                    <a href="https://inclusionsociale.com/#theme-1" class="submenu-item">1. Espace urbain & transports</a>
+                    <a href="https://inclusionsociale.com/#theme-2" class="submenu-item">2. Éducation & institutions</a>
+                    <a href="https://inclusionsociale.com/#theme-3" class="submenu-item">3. Travail, autonomie & loisirs</a>
+                    <a href="https://inclusionsociale.com/#theme-4" class="submenu-item">4. Expérience vécue & stigmates</a>
                 </div>
             </div>
 
-            <!-- Interactive Navigation Menu -->
-            <nav class="space-y-3 pb-6">
-                <h2 class="text-xs uppercase tracking-wider font-semibold text-burgundy">Navigation dans le texte</h2>
-                <div class="flex flex-col space-y-1 text-sm font-medium">
-                    <a href="#introduction" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
-                        <span>Introduction</span>
-                        <span class="text-xs text-academic-muted">00</span>
-                    </a>
-                    <a href="#section-1" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
-                        <span>1. L’appropriation du jumelage</span>
-                        <span class="text-xs text-academic-muted">01</span>
-                    </a>
-                    <a href="#section-2" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
-                        <span>2. Nouveaux outils par et pour</span>
-                        <span class="text-xs text-academic-muted">02</span>
-                    </a>
-                    <a href="#section-3" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
-                        <span>3. Importance de l’accompagnement</span>
-                        <span class="text-xs text-academic-muted">03</span>
-                    </a>
-                    <a href="#section-4" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
-                        <span>4. Maintenir le lien de confiance</span>
-                        <span class="text-xs text-academic-muted">04</span>
-                    </a>
-                    <a href="#section-5" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
-                        <span>5. Évolution des pratiques</span>
-                        <span class="text-xs text-academic-muted">05</span>
-                    </a>
-                    <a href="#section-6" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
-                        <span>6. Nouvelle vision de l’inclusion</span>
-                        <span class="text-xs text-academic-muted">06</span>
-                    </a>
-                    <a href="#conclusion" class="nav-link px-3 py-2 rounded-md hover:bg-cream transition-colors text-academic-text flex items-center justify-between">
-                        <span>Conclusion</span>
-                        <span class="text-xs text-academic-muted">07</span>
-                    </a>
+            <div>
+                <button class="nav-btn" onclick="toggleSubmenu(event, 'bilansSubmenu', 'bilansSubmenuArrow')">
+                    <span>Bilans</span>
+                    <svg id="bilansSubmenuArrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="transform: rotate(180deg);"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="submenu open" id="bilansSubmenu">
+                    <a href="https://inclusionsociale.com/mentorat-actif-bilan.html" class="submenu-item">Mentorat actif, un plus tard</a>
                 </div>
+            </div>
+            <!-- Bouton Tournages en cours non gras -->
+            <div>
+                <a href="https://inclusionsociale.com/tournages.html" class="nav-btn" style="font-weight: normal;">
+                    <span>Tournages en cours</span>
+                </a>
+            </div>
+
+            <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #7a2222; letter-spacing: 0.05em; margin-top: 0.75rem; margin-bottom: 0.25rem; padding-left: 0.25rem;">NAVIGATION DANS LA PAGE</div>
+            <nav class="page-nav-list" aria-label="Navigation dans la page">
+                <a href="#introduction" class="submenu-item">Introduction</a>
+                <a href="#section-1" class="submenu-item">1. L’appropriation de cette nouvelle forme de jumelage</a>
+                <a href="#section-2" class="submenu-item">2. De nouveaux outils par et pour les organismes</a>
+                <a href="#section-3" class="submenu-item">3. L'importance de l’accompagnement pour les organismes</a>
+                <a href="#rencontres-collectives" class="submenu-item page-nav-subitem">Rencontres collectives de suivi</a>
+                <a href="#accompagnement-individualise" class="submenu-item page-nav-subitem">Accompagnement individualisé offert par le Regroupement</a>
+                <a href="#section-4" class="submenu-item">4. Maintenir le lien de confiance</a>
+                <a href="#section-5" class="submenu-item">5. Une évolution des pratiques</a>
+                <a href="#section-6" class="submenu-item">6. Une nouvelle vision de l’inclusion</a>
+                <a href="#conclusion" class="submenu-item">Conclusion</a>
             </nav>
+        </div>
+    </aside>
 
-            <!-- Quick Guide Link Box -->
-            <div class="mt-auto bg-burgundy-subtle border border-burgundy/20 rounded-lg p-4 text-xs text-burgundy-dark space-y-2">
-                <p class="font-semibold">Ressource en ligne</p>
-                <p class="text-academic-text">Guide de mise en place, série documentaire et outils d'implantation.</p>
-                <a href="https://autodetermination.ca/outil/guide-de-mentorat-actif/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-1 font-bold text-burgundy hover:underline pt-1">
-                    <span>Accéder au site web</span>
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                </a>
-            </div>
-
-        </aside>
-
-        <!-- 3. Right Main Content Column -->
-        <main class="flex-1 px-6 md:px-16 py-10 max-w-4xl mx-auto space-y-12">
+    <!-- Zone de contenu dynamique à droite (Contenu transféré de mentorat-actif-bilan.html) -->
+    <div class="main-wrapper">
+        <main class="flex-1 px-6 md:px-10 lg:px-12 py-10 max-w-6xl mx-auto space-y-12 w-full">
 
             <!-- Title & Subtitle Banner -->
             <section class="border-b border-academic-border pb-8 text-center md:text-left space-y-4">
@@ -199,15 +520,37 @@
                 <p class="academic-text text-lg md:text-xl text-academic-muted italic">
                     Bilan des changements observés un an après l’implantation du Mentorat Actif dans les organismes de parrainage civique du Québec
                 </p>
-
-                <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4 text-sm text-academic-muted border-t border-academic-border/60">
-                    <span><strong>Monique Maltais</strong></span>
-                    <span>•</span>
-                    <span><strong>Élise Milot</strong></span>
-                    <span>•</span>
-                    <span><strong>Laurence Ouellet</strong></span>
-                </div>
             </section>
+
+            <!-- Trois cases des autrices côte-à-côte juste au-dessus d'Introduction -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Author 1: Monique Maltais -->
+                <div class="flex items-start space-x-3 bg-cream p-3 rounded-lg border border-academic-border shadow-xs">
+                    <img src="https://raw.githubusercontent.com/sociocamera/mentoratactif/images/Maltais_Monique.jpg" alt="Monique Maltais" class="w-12 h-12 rounded-full object-cover border border-burgundy/30 flex-shrink-0" onerror="this.src='https://placehold.co/120x120/7A2222/ffffff?text=MM'">
+                    <div class="text-xs">
+                        <h3 class="font-bold text-academic-text">Monique Maltais</h3>
+                        <p class="text-academic-muted mt-0.5 leading-relaxed">Anciennement coordonnatrice du Centre de parrainage civique de Québec, Responsable de l’application du Mentorat Actif au Regroupement québécois du parrainage civique.</p>
+                    </div>
+                </div>
+
+                <!-- Author 2: Élise Milot -->
+                <div class="flex items-start space-x-3 bg-cream p-3 rounded-lg border border-academic-border shadow-xs">
+                    <img src="https://raw.githubusercontent.com/sociocamera/mentoratactif/images/Milot_Elise.jpg" alt="Élise Milot" class="w-12 h-12 rounded-full object-cover border border-burgundy/30 flex-shrink-0" onerror="this.src='https://placehold.co/120x120/5c4033/ffffff?text=EM'">
+                    <div class="text-xs">
+                        <h3 class="font-bold text-academic-text">Élise Milot</h3>
+                        <p class="text-academic-muted mt-0.5 leading-relaxed">Professeure titulaire à l’École de travail social et de criminologie de l’Université Laval et cotitulaire de la Chaire Autodétermination et Handicap.</p>
+                    </div>
+                </div>
+
+                <!-- Author 3: Laurence Ouellet -->
+                <div class="flex items-start space-x-3 bg-cream p-3 rounded-lg border border-academic-border shadow-xs">
+                    <img src="https://raw.githubusercontent.com/sociocamera/mentoratactif/images/Ouellet_Laurence.jpg" alt="Laurence Ouellet" class="w-12 h-12 rounded-full object-cover border border-burgundy/30 flex-shrink-0" onerror="this.src='https://placehold.co/120x120/3b4d61/ffffff?text=LO'">
+                    <div class="text-xs">
+                        <h3 class="font-bold text-academic-text">Laurence Ouellet</h3>
+                        <p class="text-academic-muted mt-0.5 leading-relaxed">Agente de recherche, Chaire Autodétermination et Handicap, UQTR.</p>
+                    </div>
+                </div>
+            </div>
 
             <!-- Introduction -->
             <section id="introduction" class="space-y-6">
@@ -305,7 +648,7 @@
                     <!-- Netflix Slider Container -->
                     <div id="videoSlider" class="flex space-x-4 overflow-x-auto pb-4 pt-2 px-1 scrollbar-thin scrollbar-thumb-burgundy scroll-smooth">
                         <!-- Video Item 1 -->
-                        <div onclick="openVideoModal('https://drive.google.com/file/d/1bjwJGxwIVKcnB1E_lSWH0cmTyfzPC7pA/preview', 'Partie 1')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                        <div onclick="openModal('video', 'Partie 1', 'https://drive.google.com/file/d/1bjwJGxwIVKcnB1E_lSWH0cmTyfzPC7pA/preview?autoplay=1')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
                             <div class="relative aspect-video bg-academic-muted/20 overflow-hidden">
                                 <img src="https://lh3.googleusercontent.com/d/1Tg354bM4WZlwGMus1dFuU_nj9P2YVHHq" alt="Partie 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                                 <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -322,7 +665,7 @@
                         </div>
 
                         <!-- Video Item 2 -->
-                        <div onclick="openVideoModal('https://drive.google.com/file/d/1DZm6Du56pN6zILXznUtc3JH4G1J4xKYX/preview', 'Partie 2')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                        <div onclick="openModal('video', 'Partie 2', 'https://drive.google.com/file/d/1DZm6Du56pN6zILXznUtc3JH4G1J4xKYX/preview?autoplay=1')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
                             <div class="relative aspect-video bg-academic-muted/20 overflow-hidden">
                                 <img src="https://lh3.googleusercontent.com/d/1OTMLxMzTEGxmfLbmhf9DqQIrrBy8zcyb" alt="Partie 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                                 <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -339,7 +682,7 @@
                         </div>
 
                         <!-- Video Item 3 -->
-                        <div onclick="openVideoModal('https://drive.google.com/file/d/1mn5K39yxyoyb35oHKGiOiaPa9_LRRA0j/preview', 'Partie 3')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                        <div onclick="openModal('video', 'Partie 3', 'https://drive.google.com/file/d/1mn5K39yxyoyb35oHKGiOiaPa9_LRRA0j/preview?autoplay=1')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
                             <div class="relative aspect-video bg-academic-muted/20 overflow-hidden">
                                 <img src="https://lh3.googleusercontent.com/d/1MGJBLfjaN0qRJrlRW5gotLzaMEviq-Qc" alt="Partie 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                                 <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -356,7 +699,7 @@
                         </div>
 
                         <!-- Video Item 4 -->
-                        <div onclick="openVideoModal('https://drive.google.com/file/d/1X9v-50MEsb8lwwI_IGt9Jah3oJPVh-5r/preview', 'Partie 4')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                        <div onclick="openModal('video', 'Partie 4', 'https://drive.google.com/file/d/1X9v-50MEsb8lwwI_IGt9Jah3oJPVh-5r/preview?autoplay=1')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
                             <div class="relative aspect-video bg-academic-muted/20 overflow-hidden">
                                 <img src="https://lh3.googleusercontent.com/d/1niY1cEpQIxgNqAUO0D9wmwyvTyRTvVNo" alt="Partie 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                                 <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -373,7 +716,7 @@
                         </div>
 
                         <!-- Video Item 5 -->
-                        <div onclick="openVideoModal('https://drive.google.com/file/d/12tmGmyCFS5Iw9EUzdHno5uMJjXLOw65d/preview', 'Partie 5')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                        <div onclick="openModal('video', 'Partie 5', 'https://drive.google.com/file/d/12tmGmyCFS5Iw9EUzdHno5uMJjXLOw65d/preview?autoplay=1')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
                             <div class="relative aspect-video bg-academic-muted/20 overflow-hidden">
                                 <img src="https://lh3.googleusercontent.com/d/1DucLaMCl4LHqM91BRMVTbUIztCVMBz5w" alt="Partie 5" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                                 <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -390,7 +733,7 @@
                         </div>
 
                         <!-- Video Item 6 -->
-                        <div onclick="openVideoModal('https://drive.google.com/file/d/1a331BNpssg5VTEhBzAPAiAk9_8O2kKk3/preview', 'Partie 6')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                        <div onclick="openModal('video', 'Partie 6', 'https://drive.google.com/file/d/1a331BNpssg5VTEhBzAPAiAk9_8O2kKk3/preview?autoplay=1')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
                             <div class="relative aspect-video bg-academic-muted/20 overflow-hidden">
                                 <img src="https://lh3.googleusercontent.com/d/1ecJojAGFbTn-4kEvF_kvDrTZFpN_mG9h" alt="Partie 6" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                                 <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -407,7 +750,7 @@
                         </div>
 
                         <!-- Video Item 7 -->
-                        <div onclick="openVideoModal('https://drive.google.com/file/d/1oA1zzu4IusmEESfudH3u4S8nHrj-ryPG/preview', 'Partie 7')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                        <div onclick="openModal('video', 'Partie 7', 'https://drive.google.com/file/d/1oA1zzu4IusmEESfudH3u4S8nHrj-ryPG/preview?autoplay=1')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
                             <div class="relative aspect-video bg-academic-muted/20 overflow-hidden">
                                 <img src="https://lh3.googleusercontent.com/d/1bfWSBmtJyc82zOLHnJGQVQIAkZxJWnuZ" alt="Partie 7" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                                 <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -424,7 +767,7 @@
                         </div>
 
                         <!-- Video Item 8 -->
-                        <div onclick="openVideoModal('https://drive.google.com/file/d/1SzcJctMkbGRS2j116sQ2KCSG0V9Ik1QN/preview', 'Partie 8')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                        <div onclick="openModal('video', 'Partie 8', 'https://drive.google.com/file/d/1SzcJctMkbGRS2j116sQ2KCSG0V9Ik1QN/preview?autoplay=1')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
                             <div class="relative aspect-video bg-academic-muted/20 overflow-hidden">
                                 <img src="https://lh3.googleusercontent.com/d/1-Twf8-bEtYfs2MqA0QuFDKThYaX3wpiO" alt="Partie 8" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                                 <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -441,74 +784,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Modal Vidéo -->
-                <div id="videoModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-                    <div class="bg-cream-card border border-academic-border rounded-2xl w-full max-w-4xl mx-4 overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="modalContainer">
-                        <div class="flex items-center justify-between px-6 py-4 border-b border-academic-border bg-cream">
-                            <h3 id="modalTitle" class="academic-text font-bold text-lg text-burgundy-dark">Lecture vidéo</h3>
-                            <button onclick="closeVideoModal()" class="p-2 rounded-full hover:bg-cream-dark text-academic-muted hover:text-burgundy transition-colors" aria-label="Fermer">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                            </button>
-                        </div>
-                        <div class="relative aspect-video bg-black">
-                            <iframe id="videoIframe" src="" class="w-full h-full border-0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <script>
-                    function scrollSlider(sliderId, direction) {
-                        const slider = document.getElementById(sliderId);
-                        const scrollAmount = 320;
-                        if (direction === 'left') {
-                            slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-                        } else {
-                            slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                        }
-                    }
-
-                    function openVideoModal(videoUrl, title) {
-                        const modal = document.getElementById('videoModal');
-                        const container = document.getElementById('modalContainer');
-                        const iframe = document.getElementById('videoIframe');
-                        const modalTitle = document.getElementById('modalTitle');
-
-                        modalTitle.textContent = title;
-                        iframe.src = videoUrl + (videoUrl.includes('?') ? '&' : '?') + 'autoplay=1';
-                        
-                        modal.classList.remove('opacity-0', 'pointer-events-none');
-                        container.classList.remove('scale-95');
-                        container.classList.add('scale-100');
-                    }
-
-                    function closeVideoModal() {
-                        const modal = document.getElementById('videoModal');
-                        const container = document.getElementById('modalContainer');
-                        const iframe = document.getElementById('videoIframe');
-
-                        modal.classList.add('opacity-0', 'pointer-events-none');
-                        container.classList.remove('scale-100');
-                        container.classList.add('scale-95');
-                        
-                        // Arrêter la lecture en vidant la source de l'iframe
-                        iframe.src = '';
-                    }
-
-                    // Fermer la modale avec la touche Échap
-                    document.addEventListener('keydown', function(event) {
-                        if (event.key === 'Escape') {
-                            closeVideoModal();
-                        }
-                    });
-
-                    // Fermer la modale en cliquant en dehors du conteneur
-                    document.getElementById('videoModal').addEventListener('click', function(event) {
-                        if (event.target === this) {
-                            closeVideoModal();
-                        }
-                    });
-                </script>
 
                 <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
                     <p>
@@ -536,7 +811,7 @@
                     <!-- Netflix Slider Container -->
                     <div id="casesSlider" class="flex space-x-4 overflow-x-auto pb-4 pt-2 px-1 scrollbar-thin scrollbar-thumb-burgundy scroll-smooth">
                         <!-- Case 1: Christine -->
-                        <div onclick="openVideoModal('https://drive.google.com/file/d/18tLmYkZn1d2oGzv3Qbq8w8gI5IwiS6UI/preview', 'Étude de cas — Christine')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                        <div onclick="openModal('video', 'Étude de cas — Christine', 'https://drive.google.com/file/d/18tLmYkZn1d2oGzv3Qbq8w8gI5IwiS6UI/preview?autoplay=1')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
                             <div class="relative aspect-video bg-academic-muted/20 overflow-hidden">
                                 <img src="https://lh3.googleusercontent.com/d/1UnZJ8bxyxuy32BKO0KkB3XcnsiecrE0w" alt="Christine" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                                 <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -553,7 +828,7 @@
                         </div>
 
                         <!-- Case 2: Dave -->
-                        <div onclick="openVideoModal('https://drive.google.com/file/d/19-u6z7S9mP2RlNq0TIjOM9M14L4AfSsn/preview', 'Étude de cas — Dave')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                        <div onclick="openModal('video', 'Étude de cas — Dave', 'https://drive.google.com/file/d/19-u6z7S9mP2RlNq0TIjOM9M14L4AfSsn/preview?autoplay=1')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
                             <div class="relative aspect-video bg-academic-muted/20 overflow-hidden">
                                 <img src="https://lh3.googleusercontent.com/d/1HtbgKEy6HnxorZNg_YTZBbVf1AhUKZIG" alt="Dave" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                                 <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -570,7 +845,7 @@
                         </div>
 
                         <!-- Case 3: Denis -->
-                        <div onclick="openVideoModal('https://drive.google.com/file/d/1yZkbaBHXP0uFKO4ZRm_qbalqnzji4_5f/preview', 'Étude de cas — Denis')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                        <div onclick="openModal('video', 'Étude de cas — Denis', 'https://drive.google.com/file/d/1yZkbaBHXP0uFKO4ZRm_qbalqnzji4_5f/preview?autoplay=1')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
                             <div class="relative aspect-video bg-academic-muted/20 overflow-hidden">
                                 <img src="https://lh3.googleusercontent.com/d/1TtQDNpBNAtAr2_pXynQzW3GqorvlCIJo" alt="Denis" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                                 <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -587,7 +862,7 @@
                         </div>
 
                         <!-- Case 4: Odette -->
-                        <div onclick="openVideoModal('https://drive.google.com/file/d/1lflbo4yNfwLWGhbHSFw_0bvwMLGgRULJ/preview', 'Étude de cas — Odette')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
+                        <div onclick="openModal('video', 'Étude de cas — Odette', 'https://drive.google.com/file/d/1lflbo4yNfwLWGhbHSFw_0bvwMLGgRULJ/preview?autoplay=1')" class="flex-shrink-0 w-72 bg-cream-card rounded-xl overflow-hidden border border-academic-border shadow-sm cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-md">
                             <div class="relative aspect-video bg-academic-muted/20 overflow-hidden">
                                 <img src="https://lh3.googleusercontent.com/d/1oP7Iu4kbWISiaZ0RNzmFkgau6nurPQA5" alt="Odette" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                                 <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -726,7 +1001,7 @@
                 </div>
 
                 <div class="space-y-6 pt-4">
-                    <h3 class="academic-text text-xl font-semibold text-burgundy">Rencontres collectives de suivi</h3>
+                    <h3 id="rencontres-collectives" class="academic-text text-xl font-semibold text-burgundy">Rencontres collectives de suivi</h3>
                     <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
                         <p>
                             Les rencontres collectives de suivi réunissent les personnes intervenantes engagées dans la mise en œuvre du Mentorat Actif, la direction du Regroupement ainsi que Monique Maltais, qui accompagne les organismes dans le déploiement et l’évolution de l’approche. Tenues environ quatre fois par année, elles constituent un espace privilégié d’échange, de réflexion et d’apprentissage entre pairs, permettant aux organismes de partager leurs expériences, de résoudre collectivement les défis rencontrés et de soutenir une mise en œuvre cohérente du Mentorat Actif.
@@ -740,7 +1015,7 @@
                         </ul>
                     </div>
 
-                    <h3 class="academic-text text-xl font-semibold text-burgundy pt-4">Accompagnement individualisé offert par le Regroupement</h3>
+                    <h3 id="accompagnement-individualise" class="academic-text text-xl font-semibold text-burgundy pt-4">Accompagnement individualisé offert par le Regroupement</h3>
                     <div class="academic-text text-base md:text-lg leading-relaxed space-y-4 text-academic-text text-justify">
                         <p>
                             En complément des rencontres collectives, Monique Maltais offre un accompagnement individualisé aux organismes selon leurs besoins. Réalisés par téléphone, visioconférence ou courriel, ces échanges constituent un soutien précieux, particulièrement lors des premières étapes d’implantation. Grâce à son rôle dans le développement et l’implantation du Mentorat Actif dans le cadre de la recherche et à sa connaissance approfondie du réseau du parrainage civique, elle agit à la fois comme personne-ressource, accompagnatrice et courroie de transmission entre les organismes. Son accompagnement contribue à maintenir l’élan des équipes, à soutenir leur réflexion et à assurer une cohérence dans le déploiement de l’approche à l’échelle du Québec.
@@ -1069,30 +1344,160 @@
         </main>
     </div>
 
-    <!-- Active Navigation Highlight Script -->
+    <!-- Modal Universel (PDF / Vidéo) -->
+    <div class="modal-overlay" id="mediaModal" onclick="closeModalOnOutside(event)">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 id="modalTitle">Titre de la fenêtre</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBodyContent"></div>
+        </div>
+    </div>
+
+    <!-- Modal de Proposition d'Article / Projet -->
+    <div class="modal-overlay" id="proposalModal" onclick="closeProposalModalOnOutside(event)">
+        <div class="modal-container" style="max-width: 800px; height: auto;">
+            <div class="modal-header">
+                <h3 id="proposalModalTitle">Proposer une captation ou un article / Nous faire part d'un commentaire</h3>
+                <button class="modal-close" onclick="closeProposalModal()">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 1.5rem; overflow-y: auto;">
+                <form id="proposalForm" onsubmit="submitProposal(event)" style="display: flex; flex-direction: column; gap: 1rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                    <input type="hidden" id="propCategory" value="article">
+                    <div>
+                        <label for="propName" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; color: #7a2222;">Votre nom</label>
+                        <input type="text" id="propName" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff;">
+                    </div>
+                    <div>
+                        <label for="propEmail" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; color: #7a2222;">Votre courriel</label>
+                        <input type="email" id="propEmail" required style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff;">
+                    </div>
+                    <div>
+                        <label for="propTitle" id="propTitleLabel" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; color: #7a2222;">Que désirez-vous nous communiquer ?</label>
+                        <input type="text" id="propTitle" required placeholder="Ex: Analyse de l'accessibilité urbaine..." style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff;">
+                    </div>
+                    <div>
+                        <label for="propDesc" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; color: #7a2222;">Description ou résumé</label>
+                        <textarea id="propDesc" rows="4" required placeholder="Décrivez votre proposition en quelques lignes..." style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff; resize: vertical;"></textarea>
+                    </div>
+                    <button type="submit" style="background-color: #7a2222; color: #fff; border: none; padding: 0.75rem; border-radius: 4px; font-weight: 600; cursor: pointer; margin-top: 0.5rem; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#5e1a1a'" onmouseout="this.style.backgroundColor='#7a2222'">Envoyer la proposition</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
-        const observerOptions = {
-            root: null,
-            rootMargin: '-20% 0px -70% 0px',
-            threshold: 0
-        };
+        function scrollSlider(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const scrollAmount = 320;
+            if (direction === 'left') {
+                slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    document.querySelectorAll('.nav-link').forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${id}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }, observerOptions);
+        function toggleSubmenu(event, submenuId, arrowId) {
+            event.stopPropagation();
+            const submenu = document.getElementById(submenuId);
+            const arrow = document.getElementById(arrowId);
+            submenu.classList.toggle('open');
+            arrow.style.transform = submenu.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
 
-        document.querySelectorAll('section[id]').forEach((section) => {
-            observer.observe(section);
+        function openModal(type, title, url) {
+            const modal = document.getElementById('mediaModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBodyContent = document.getElementById('modalBodyContent');
+
+            modalTitle.textContent = title;
+            modalBodyContent.innerHTML = '';
+
+            if (type === 'pdf') {
+                const iframe = document.createElement('iframe');
+                iframe.className = 'pdf-frame';
+                iframe.src = url;
+                modalBodyContent.appendChild(iframe);
+            } else if (type === 'video') {
+                const iframe = document.createElement('iframe');
+                iframe.className = 'video-frame';
+                iframe.src = url;
+                iframe.setAttribute('allow', 'autoplay; fullscreen');
+                modalBodyContent.appendChild(iframe);
+            }
+
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('mediaModal');
+            modal.style.display = 'none';
+            document.getElementById('modalBodyContent').innerHTML = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModalOnOutside(event) {
+            const modal = document.getElementById('mediaModal');
+            if (event.target === modal) closeModal();
+        }
+
+        function openProposalModal(type) {
+            const proposalModal = document.getElementById('proposalModal');
+            const titleEl = document.getElementById('proposalModalTitle');
+            const categoryEl = document.getElementById('propCategory');
+            const titleLabelEl = document.getElementById('propTitleLabel');
+            const titleInputEl = document.getElementById('propTitle');
+
+            categoryEl.value = type;
+
+            if (type === 'captation') {
+                titleEl.textContent = "Nous faire part d'un commentaire ou d'une proposition (captation ou article)";
+                titleLabelEl.textContent = "Que voulez-vous nous communiquer ?";
+                titleInputEl.placeholder = "Ex: projet de captation, soumettre un article, faire un commentaire...";
+            } else {
+                titleEl.textContent = "Nous faire part d'un commentaire ou d'une proposition (captation ou article)";
+                titleLabelEl.textContent = "Que voulez-vous nous communiquer ?";
+                titleInputEl.placeholder = "Ex: projet de captation, soumettre un article, faire un commentaire...";
+            }
+
+            proposalModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProposalModal() {
+            const proposalModal = document.getElementById('proposalModal');
+            proposalModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeProposalModalOnOutside(event) {
+            const proposalModal = document.getElementById('proposalModal');
+            if (event.target === proposalModal) closeProposalModal();
+        }
+
+        function submitProposal(event) {
+            event.preventDefault();
+            const name = document.getElementById('propName').value;
+            const email = document.getElementById('propEmail').value;
+            const category = document.getElementById('propCategory').value;
+            const title = document.getElementById('propTitle').value;
+            const desc = document.getElementById('propDesc').value;
+
+            const typeLabel = category === 'captation' ? 'Proposition de captation' : "Proposition d'article";
+            const subject = encodeURIComponent(`${typeLabel} : ${title}`);
+            const body = encodeURIComponent(`Nom : ${name}\nCourriel : ${email}\nType : ${typeLabel}\nTitre : ${title}\n\nDescription :\n${desc}`);
+
+            window.location.href = `mailto:sociocamera@gmail.com?subject=${subject}&body=${body}`;
+            closeProposalModal();
+        }
+
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+                closeProposalModal();
+            }
         });
     </script>
 </body>
